@@ -1,0 +1,55 @@
+{
+  "residents": [
+    {
+      "allergies": [
+        "nillacilan"
+      ],
+      "phone": "841-874-6512",
+      "medications": [
+        "aznol:350mg",
+        "hydrapermazol:100mg"
+      ],
+      "name": "John Boyd",
+      "age": 39
+    },
+    {
+      "allergies": [],
+      "phone": "841-874-6513",
+      "medications": [
+        "pharmacol:5000mg",
+        "terazine:10mg",
+        "noznazol:250mg"
+      ],
+      "name": "Jacob Boyd",
+      "age": 34
+    },
+    {
+      "allergies": [
+        "peanut"
+      ],
+      "phone": "841-874-6512",
+      "medications": [],
+      "name": "Tenley Boyd",
+      "age": 11
+    },
+    {
+      "allergies": [],
+      "phone": "841-874-6512",
+      "medications": [],
+      "name": "Roger Boyd",
+      "age": 6
+    },
+    {
+      "allergies": [
+        "xilliathal"
+      ],
+      "phone": "841-874-6544",
+      "medications": [
+        "tetracyclaz:650mg"
+      ],
+      "name": "Felicia Boyd",
+      "age": 38
+    }
+  ],
+  "fireStationNumbers": "3"
+}

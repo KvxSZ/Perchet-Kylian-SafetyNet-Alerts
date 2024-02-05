@@ -1,0 +1,31 @@
+{
+  "childrenInfo": [
+    {
+      "firstName": "Tenley",
+      "lastName": "Boyd",
+      "age": 11
+    },
+    {
+      "firstName": "Roger",
+      "lastName": "Boyd",
+      "age": 6
+    }
+  ],
+  "otherResidentsMenbers": [
+    {
+      "firstName": "John",
+      "lastName": "Boyd",
+      "age": 39
+    },
+    {
+      "firstName": "Jacob",
+      "lastName": "Boyd",
+      "age": 34
+    },
+    {
+      "firstName": "Felicia",
+      "lastName": "Boyd",
+      "age": 38
+    }
+  ]
+}

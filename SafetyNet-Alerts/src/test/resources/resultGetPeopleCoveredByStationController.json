@@ -1,0 +1,72 @@
+{
+  "children": 3,
+  "adults": 8,
+  "people": [
+    {
+      "firstName": "John",
+      "lastName": "Boyd",
+      "address": "1509 Culver St",
+      "phone": "841-874-6512"
+    },
+    {
+      "firstName": "Jacob",
+      "lastName": "Boyd",
+      "address": "1509 Culver St",
+      "phone": "841-874-6513"
+    },
+    {
+      "firstName": "Tenley",
+      "lastName": "Boyd",
+      "address": "1509 Culver St",
+      "phone": "841-874-6512"
+    },
+    {
+      "firstName": "Roger",
+      "lastName": "Boyd",
+      "address": "1509 Culver St",
+      "phone": "841-874-6512"
+    },
+    {
+      "firstName": "Felicia",
+      "lastName": "Boyd",
+      "address": "1509 Culver St",
+      "phone": "841-874-6544"
+    },
+    {
+      "firstName": "Tessa",
+      "lastName": "Carman",
+      "address": "834 Binoc Ave",
+      "phone": "841-874-6512"
+    },
+    {
+      "firstName": "Foster",
+      "lastName": "Shepard",
+      "address": "748 Townings Dr",
+      "phone": "841-874-6544"
+    },
+    {
+      "firstName": "Tony",
+      "lastName": "Cooper",
+      "address": "112 Steppes Pl",
+      "phone": "841-874-6874"
+    },
+    {
+      "firstName": "Ron",
+      "lastName": "Peters",
+      "address": "112 Steppes Pl",
+      "phone": "841-874-8888"
+    },
+    {
+      "firstName": "Allison",
+      "lastName": "Boyd",
+      "address": "112 Steppes Pl",
+      "phone": "841-874-9888"
+    },
+    {
+      "firstName": "Clive",
+      "lastName": "Ferguson",
+      "address": "748 Townings Dr",
+      "phone": "841-874-6741"
+    }
+  ]
+}

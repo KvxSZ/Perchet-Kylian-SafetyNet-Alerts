@@ -1,0 +1,15 @@
+[
+  {
+    "medications": [
+      "aznol:350mg",
+      "hydrapermazol:100mg"
+    ],
+    "name": "John Boyd",
+    "address": "1509 Culver St",
+    "email": "jaboyd@email.com",
+    "age": 39,
+    "allergies": [
+      "nillacilan"
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 package fr.safetyNetAlerts.SafetyNet.Alerts.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.safetyNetAlerts.SafetyNet.Alerts.model.Data;
+import fr.safetyNetAlerts.SafetyNet.Alerts.model.EmergencyRepository;
 import fr.safetyNetAlerts.SafetyNet.Alerts.model.FireStation;
 import fr.safetyNetAlerts.SafetyNet.Alerts.model.MedicalRecord;
 import fr.safetyNetAlerts.SafetyNet.Alerts.model.Person;
@@ -24,14 +24,19 @@ public class EmergencyService {
     private List<Person> persons = new ArrayList<>();
     private List<FireStation> firestations = new ArrayList<>();
     private List<MedicalRecord> medicalrecords = new ArrayList<>();
-    public void readJsonFile(){
+
+    public EmergencyService() {
+        readJsonFile();
+    }
+
+    public void readJsonFile() {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
             URL res = getClass().getClassLoader().getResource("data.json");
             File file = Paths.get(res.toURI()).toFile();
 
-            Data data = mapper.readValue(file, Data.class);
+            EmergencyRepository data = mapper.readValue(file, EmergencyRepository.class);
 
             persons = data.persons();
             firestations = data.firestations();

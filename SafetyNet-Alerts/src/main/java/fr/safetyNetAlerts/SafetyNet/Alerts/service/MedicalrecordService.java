@@ -1,16 +1,33 @@
 package fr.safetyNetAlerts.SafetyNet.Alerts.service;
 
+import fr.safetyNetAlerts.SafetyNet.Alerts.controllers.DTO.ChildAndOtherResident;
+import fr.safetyNetAlerts.SafetyNet.Alerts.controllers.DTO.ResidentInfoDAO;
 import fr.safetyNetAlerts.SafetyNet.Alerts.model.MedicalRecord;
+import fr.safetyNetAlerts.SafetyNet.Alerts.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MedicalrecordService {
 
     private final EmergencyService emergencyService;
+    private final PersonService personService;
 
-    public MedicalrecordService(EmergencyService emergencyService) {
+    @Autowired
+    public MedicalrecordService(EmergencyService emergencyService, PersonService personService) {
         this.emergencyService = emergencyService;
+        this.personService = personService;
+    }
+
+    public List<MedicalRecord> getMedicalRecord() {
+        return emergencyService.getMedicalRecords();
     }
 
     public String addMedicalRecord(MedicalRecord newMedicalRecord) {
@@ -41,5 +58,57 @@ public class MedicalrecordService {
             }
         }
         return "Medical record not found";
+    }
+
+    public MedicalRecord getMedicalRecordByFullName(String firstName, String lastName) {
+        List<MedicalRecord> medicalRecords = getMedicalRecord();
+
+        Optional<MedicalRecord> optionalMedicalRecord = medicalRecords.stream()
+                .filter(record -> record.getFirstName().equals(firstName) && record.getLastName().equals(lastName))
+                .findFirst();
+
+        return optionalMedicalRecord.orElse(null);
+    }
+
+    public MedicalRecord findMedicalRecord(Person person) {
+        return getMedicalRecord().stream()
+                .filter(record -> record.getFirstName().equals(person.getFirstName()) &&
+                        record.getLastName().equals(person.getLastName()))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public ChildAndOtherResident getChildAndOtherResident(String address) {
+        List<Person> residents = personService.getPerson();
+
+        List<ResidentInfoDAO> childrenInfo = new ArrayList<>();
+        List<ResidentInfoDAO> otherResidentsInfo = new ArrayList<>();
+        List<Person> residentsAtAddress = new ArrayList<>();
+
+        for (Person person : residents) {
+            if (person.getAddress().equals(address)) {
+                residentsAtAddress.add(person);
+            }
+        }
+
+        for (Person resident : residentsAtAddress) {
+            MedicalRecord medicalRecord = findMedicalRecord(resident);
+
+            if (medicalRecord != null) {
+                LocalDate birthdate = LocalDate.parse(medicalRecord.getBirthdate(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                int age = Period.between(birthdate, LocalDate.now()).getYears();
+                ResidentInfoDAO residentInfo = new ResidentInfoDAO(resident.getFirstName(), resident.getLastName(), age);
+
+                if (age <= 18) {
+                    childrenInfo.add(residentInfo);
+                } else {
+                    otherResidentsInfo.add(residentInfo);
+                }
+            }
+        }
+        if (!childrenInfo.isEmpty()) {
+            return new ChildAndOtherResident(childrenInfo, otherResidentsInfo);
+        }
+        return null;
     }
 }
